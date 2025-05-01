@@ -1,10 +1,13 @@
 
+### X
 ```sh
 export SNOWSQL_PWD=
 
 snowsql -a gnsjdpk-tj82189 -u jomoon
 ```
 
+
+### X
 ```sql
 * SnowSQL * v1.3.3
 Type SQL statements or !help
@@ -21,6 +24,8 @@ jomoon#COMPUTE_WH@(no database).(no schema)>CREATE OR REPLACE DATABASE sf_tuts;
 1 Row(s) produced. Time Elapsed: 0.115s
 ```
 
+
+### X
 ```sql
 jomoon#COMPUTE_WH@SF_TUTS.PUBLIC>SELECT CURRENT_DATABASE(), CURRENT_SCHEMA();
 +--------------------+------------------+
@@ -32,6 +37,7 @@ jomoon#COMPUTE_WH@SF_TUTS.PUBLIC>SELECT CURRENT_DATABASE(), CURRENT_SCHEMA();
 ```
 
 
+### X
 ```sql
 jomoon#COMPUTE_WH@SF_TUTS.PUBLIC>CREATE OR REPLACE TABLE emp_basic (
                                     first_name STRING ,
@@ -52,6 +58,7 @@ jomoon#COMPUTE_WH@SF_TUTS.PUBLIC>CREATE OR REPLACE TABLE emp_basic (
 ```
 
 
+### X
 ```sql
 jomoon#COMPUTE_WH@SF_TUTS.PUBLIC>CREATE OR REPLACE WAREHOUSE sf_tuts_wh WITH
                                     WAREHOUSE_SIZE='X-SMALL'
@@ -67,6 +74,7 @@ jomoon#COMPUTE_WH@SF_TUTS.PUBLIC>CREATE OR REPLACE WAREHOUSE sf_tuts_wh WITH
 ```
 
 
+### X
 ```sql
 jomoon#SF_TUTS_WH@SF_TUTS.PUBLIC>SELECT CURRENT_WAREHOUSE();
 +---------------------+
@@ -78,6 +86,7 @@ jomoon#SF_TUTS_WH@SF_TUTS.PUBLIC>SELECT CURRENT_WAREHOUSE();
 ```
 
 
+### X
 ```sql
 jomoon#SF_TUTS_WH@SF_TUTS.PUBLIC>PUT file:///home/jomoon/Snowflake/data/*.csv @sf_tuts.public.%emp_basic;
 +--------------------------+-----------------------------+-------------+-------------+--------------------+--------------------+----------+---------+
@@ -90,6 +99,7 @@ jomoon#SF_TUTS_WH@SF_TUTS.PUBLIC>PUT file:///home/jomoon/Snowflake/data/*.csv @s
 ```
 
 
+### X
 ```sql
 jomoon#SF_TUTS_WH@SF_TUTS.PUBLIC>LIST @sf_tuts.public.%emp_basic;
 +-----------------------------+------+----------------------------------+------------------------------+
@@ -102,6 +112,7 @@ jomoon#SF_TUTS_WH@SF_TUTS.PUBLIC>LIST @sf_tuts.public.%emp_basic;
 ```
 
 
+### X
 ```sql
 jomoon#SF_TUTS_WH@SF_TUTS.PUBLIC>COPY INTO emp_basic
                                    FROM @%emp_basic
@@ -118,6 +129,7 @@ jomoon#SF_TUTS_WH@SF_TUTS.PUBLIC>COPY INTO emp_basic
 ```
 
 
+### X
 ```sql
 jomoon#SF_TUTS_WH@SF_TUTS.PUBLIC>REMOVE @sf_tuts.public.%emp_basic;
 +-----------------------------+---------+
@@ -130,11 +142,13 @@ jomoon#SF_TUTS_WH@SF_TUTS.PUBLIC>REMOVE @sf_tuts.public.%emp_basic;
 ```
 
 
+### X
 ```sql
 jomoon#SF_TUTS_WH@SF_TUTS.PUBLIC>LIST @sf_tuts.public.%emp_basic;
 ```
 
 
+### X
 ```sql
 jomoon#SF_TUTS_WH@SF_TUTS.PUBLIC>PUT file:///home/jomoon/Snowflake/data/*.csv @sf_tuts.public.%emp_basic;
 +--------------------------+-----------------------------+-------------+-------------+--------------------+--------------------+----------+---------+
@@ -147,6 +161,7 @@ jomoon#SF_TUTS_WH@SF_TUTS.PUBLIC>PUT file:///home/jomoon/Snowflake/data/*.csv @s
 ```
 
 
+### X
 ```sql
 jomoon#SF_TUTS_WH@SF_TUTS.PUBLIC>LIST @sf_tuts.public.%emp_basic;
 +-----------------------------+------+----------------------------------+------------------------------+
@@ -159,6 +174,7 @@ jomoon#SF_TUTS_WH@SF_TUTS.PUBLIC>LIST @sf_tuts.public.%emp_basic;
 ```
 
 
+### X
 ```sql
 jomoon#SF_TUTS_WH@SF_TUTS.PUBLIC>COPY INTO emp_basic
                                                                     FROM @%emp_basic
@@ -177,6 +193,7 @@ jomoon#SF_TUTS_WH@SF_TUTS.PUBLIC>COPY INTO emp_basic
 ```
 
 
+### X
 ```sql
 jomoon#SF_TUTS_WH@SF_TUTS.PUBLIC>SELECT * FROM emp_basic;
 +------------+-----------+-------+---------------+------+------------+
@@ -196,6 +213,7 @@ jomoon#SF_TUTS_WH@SF_TUTS.PUBLIC>SELECT * FROM emp_basic;
 ```
 
 
+### X
 ```sql
 jomoon#SF_TUTS_WH@SF_TUTS.PUBLIC>INSERT INTO emp_basic VALUES
                                     ('Clementine','Adamou','cadamou@sf_tuts.com','10510 Sachs Road','Klenak','2017-9-22') ,
@@ -209,6 +227,7 @@ jomoon#SF_TUTS_WH@SF_TUTS.PUBLIC>INSERT INTO emp_basic VALUES
 ```
 
 
+### X
 ```sql
 jomoon#SF_TUTS_WH@SF_TUTS.PUBLIC>SELECT * FROM emp_basic;
 +------------+-----------+------------------------+------------------------+----------+------------+
@@ -230,6 +249,7 @@ jomoon#SF_TUTS_WH@SF_TUTS.PUBLIC>SELECT * FROM emp_basic;
 ```
 
 
+### X
 ```sql
 jomoon#SF_TUTS_WH@SF_TUTS.PUBLIC>SELECT email FROM emp_basic WHERE email LIKE '%.uk';
 +------------------------+
@@ -241,6 +261,7 @@ jomoon#SF_TUTS_WH@SF_TUTS.PUBLIC>SELECT email FROM emp_basic WHERE email LIKE '%
 ```
 
 
+### X
 ```sql
 jomoon#SF_TUTS_WH@SF_TUTS.PUBLIC>SELECT first_name, last_name, DATEADD('day',90,start_date) FROM emp_basic WHERE start_date <= '2017-01-01';
 +------------+-----------+------------------------------+
@@ -260,6 +281,7 @@ jomoon#SF_TUTS_WH@SF_TUTS.PUBLIC>SELECT first_name, last_name, DATEADD('day',90,
 ```
 
 
+### X
 ```sql
 jomoon#SF_TUTS_WH@SF_TUTS.PUBLIC>DROP DATABASE IF EXISTS sf_tuts;
 +-------------------------------+
@@ -271,6 +293,7 @@ jomoon#SF_TUTS_WH@SF_TUTS.PUBLIC>DROP DATABASE IF EXISTS sf_tuts;
 ```
 
 
+### X
 ```sql
 jomoon#SF_TUTS_WH@SF_TUTS.PUBLIC>DROP WAREHOUSE IF EXISTS sf_tuts_wh;
 +----------------------------------+
