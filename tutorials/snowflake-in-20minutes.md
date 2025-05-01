@@ -12,7 +12,7 @@ jomoon#COMPUTE_WH@(no database).(no schema)>
 
 ### Create a database
 ```sql
-jomoon#COMPUTE_WH@(no database).(no schema)>CREATE OR REPLACE DATABASE sf_tuts;
+jomoon#COMPUTE_WH@(no database).(no schema)> CREATE OR REPLACE DATABASE sf_tuts;
 +----------------------------------------+
 | status                                 |
 |----------------------------------------|
@@ -24,7 +24,7 @@ jomoon#COMPUTE_WH@(no database).(no schema)>CREATE OR REPLACE DATABASE sf_tuts;
 
 ### Note that the database and schema you just created are now in use for your current session, as reflected in the SnowSQL command prompt. You can also use the context functions to get this information.
 ```sql
-jomoon#COMPUTE_WH@SF_TUTS.PUBLIC>SELECT CURRENT_DATABASE(), CURRENT_SCHEMA();
+jomoon#COMPUTE_WH@SF_TUTS.PUBLIC> SELECT CURRENT_DATABASE(), CURRENT_SCHEMA();
 +--------------------+------------------+
 | CURRENT_DATABASE() | CURRENT_SCHEMA() |
 |--------------------+------------------|
@@ -36,7 +36,7 @@ jomoon#COMPUTE_WH@SF_TUTS.PUBLIC>SELECT CURRENT_DATABASE(), CURRENT_SCHEMA();
 
 ### Create a table
 ```sql
-jomoon#COMPUTE_WH@SF_TUTS.PUBLIC>CREATE OR REPLACE TABLE emp_basic (
+jomoon#COMPUTE_WH@SF_TUTS.PUBLIC> CREATE OR REPLACE TABLE emp_basic (
                                     first_name STRING ,
                                     last_name STRING ,
                                     email STRING ,
@@ -57,7 +57,7 @@ jomoon#COMPUTE_WH@SF_TUTS.PUBLIC>CREATE OR REPLACE TABLE emp_basic (
 
 ### Create a virtual warehouse
 ```sql
-jomoon#COMPUTE_WH@SF_TUTS.PUBLIC>CREATE OR REPLACE WAREHOUSE sf_tuts_wh WITH
+jomoon#COMPUTE_WH@SF_TUTS.PUBLIC> CREATE OR REPLACE WAREHOUSE sf_tuts_wh WITH
                                     WAREHOUSE_SIZE='X-SMALL'
                                     AUTO_SUSPEND = 180
                                     AUTO_RESUME = TRUE
@@ -73,7 +73,7 @@ jomoon#COMPUTE_WH@SF_TUTS.PUBLIC>CREATE OR REPLACE WAREHOUSE sf_tuts_wh WITH
 
 ### After you create the warehouse, it’s now in use for your current session. This information is displayed in your SnowSQL command prompt. You can also retrieve the name of the warehouse by using the following context function:
 ```sql
-jomoon#SF_TUTS_WH@SF_TUTS.PUBLIC>SELECT CURRENT_WAREHOUSE();
+jomoon#SF_TUTS_WH@SF_TUTS.PUBLIC> SELECT CURRENT_WAREHOUSE();
 +---------------------+
 | CURRENT_WAREHOUSE() |
 |---------------------|
@@ -85,7 +85,7 @@ jomoon#SF_TUTS_WH@SF_TUTS.PUBLIC>SELECT CURRENT_WAREHOUSE();
 
 ### Execute the PUT command in SnowSQL to upload local data files to the table stage provided for the emp_basic table you created.
 ```sql
-jomoon#SF_TUTS_WH@SF_TUTS.PUBLIC>PUT file:///home/jomoon/Snowflake/data/*.csv @sf_tuts.public.%emp_basic;
+jomoon#SF_TUTS_WH@SF_TUTS.PUBLIC> PUT file:///home/jomoon/Snowflake/data/*.csv @sf_tuts.public.%emp_basic;
 +--------------------------+-----------------------------+-------------+-------------+--------------------+--------------------+----------+---------+
 | source                   | target                      | source_size | target_size | source_compression | target_compression | status   | message |
 |--------------------------+-----------------------------+-------------+-------------+--------------------+--------------------+----------+---------|
@@ -98,7 +98,7 @@ jomoon#SF_TUTS_WH@SF_TUTS.PUBLIC>PUT file:///home/jomoon/Snowflake/data/*.csv @s
 
 ### You can list the staged files using the LIST command.
 ```sql
-jomoon#SF_TUTS_WH@SF_TUTS.PUBLIC>LIST @sf_tuts.public.%emp_basic;
+jomoon#SF_TUTS_WH@SF_TUTS.PUBLIC> LIST @sf_tuts.public.%emp_basic;
 +-----------------------------+------+----------------------------------+------------------------------+
 | name                        | size | md5                              | last_modified                |
 |-----------------------------+------+----------------------------------+------------------------------|
@@ -111,7 +111,7 @@ jomoon#SF_TUTS_WH@SF_TUTS.PUBLIC>LIST @sf_tuts.public.%emp_basic;
 
 ### The COPY INTO <table> command uses the virtual warehouse you created in Create Snowflake objects to copy files.
 ```sql
-jomoon#SF_TUTS_WH@SF_TUTS.PUBLIC>COPY INTO emp_basic
+jomoon#SF_TUTS_WH@SF_TUTS.PUBLIC> COPY INTO emp_basic
                                    FROM @%emp_basic
                                    FILE_FORMAT = (type = csv field_optionally_enclosed_by='"')
                                    PATTERN = '.*.csv.gz'
@@ -128,7 +128,7 @@ jomoon#SF_TUTS_WH@SF_TUTS.PUBLIC>COPY INTO emp_basic
 
 ### Remove
 ```sql
-jomoon#SF_TUTS_WH@SF_TUTS.PUBLIC>REMOVE @sf_tuts.public.%emp_basic;
+jomoon#SF_TUTS_WH@SF_TUTS.PUBLIC> REMOVE @sf_tuts.public.%emp_basic;
 +-----------------------------+---------+
 | name                        | result  |
 |-----------------------------+---------|
@@ -141,13 +141,13 @@ jomoon#SF_TUTS_WH@SF_TUTS.PUBLIC>REMOVE @sf_tuts.public.%emp_basic;
 
 ### List Again
 ```sql
-jomoon#SF_TUTS_WH@SF_TUTS.PUBLIC>LIST @sf_tuts.public.%emp_basic;
+jomoon#SF_TUTS_WH@SF_TUTS.PUBLIC> LIST @sf_tuts.public.%emp_basic;
 ```
 
 
 ### Load Again
 ```sql
-jomoon#SF_TUTS_WH@SF_TUTS.PUBLIC>PUT file:///home/jomoon/Snowflake/data/*.csv @sf_tuts.public.%emp_basic;
+jomoon#SF_TUTS_WH@SF_TUTS.PUBLIC> PUT file:///home/jomoon/Snowflake/data/*.csv @sf_tuts.public.%emp_basic;
 +--------------------------+-----------------------------+-------------+-------------+--------------------+--------------------+----------+---------+
 | source                   | target                      | source_size | target_size | source_compression | target_compression | status   | message |
 |--------------------------+-----------------------------+-------------+-------------+--------------------+--------------------+----------+---------|
@@ -160,7 +160,7 @@ jomoon#SF_TUTS_WH@SF_TUTS.PUBLIC>PUT file:///home/jomoon/Snowflake/data/*.csv @s
 
 ### List
 ```sql
-jomoon#SF_TUTS_WH@SF_TUTS.PUBLIC>LIST @sf_tuts.public.%emp_basic;
+jomoon#SF_TUTS_WH@SF_TUTS.PUBLIC> LIST @sf_tuts.public.%emp_basic;
 +-----------------------------+------+----------------------------------+------------------------------+
 | name                        | size | md5                              | last_modified                |
 |-----------------------------+------+----------------------------------+------------------------------|
@@ -173,7 +173,7 @@ jomoon#SF_TUTS_WH@SF_TUTS.PUBLIC>LIST @sf_tuts.public.%emp_basic;
 
 ### X
 ```sql
-jomoon#SF_TUTS_WH@SF_TUTS.PUBLIC>COPY INTO emp_basic
+jomoon#SF_TUTS_WH@SF_TUTS.PUBLIC> COPY INTO emp_basic
                                                                     FROM @%emp_basic
                                                                     FILE_FORMAT = (type = csv field_optionally_enclosed_by='"')
                                                                     PATTERN = '.*.csv.gz'
@@ -192,7 +192,7 @@ jomoon#SF_TUTS_WH@SF_TUTS.PUBLIC>COPY INTO emp_basic
 
 ### X
 ```sql
-jomoon#SF_TUTS_WH@SF_TUTS.PUBLIC>SELECT * FROM emp_basic;
+jomoon#SF_TUTS_WH@SF_TUTS.PUBLIC> SELECT * FROM emp_basic;
 +------------+-----------+-------+---------------+------+------------+
 | FIRST_NAME | LAST_NAME | EMAIL | STREETADDRESS | CITY | START_DATE |
 |------------+-----------+-------+---------------+------+------------|
@@ -212,7 +212,7 @@ jomoon#SF_TUTS_WH@SF_TUTS.PUBLIC>SELECT * FROM emp_basic;
 
 ### X
 ```sql
-jomoon#SF_TUTS_WH@SF_TUTS.PUBLIC>INSERT INTO emp_basic VALUES
+jomoon#SF_TUTS_WH@SF_TUTS.PUBLIC> INSERT INTO emp_basic VALUES
                                     ('Clementine','Adamou','cadamou@sf_tuts.com','10510 Sachs Road','Klenak','2017-9-22') ,
                                     ('Marlowe','De Anesy','madamouc@sf_tuts.co.uk','36768 Northfield Plaza','Fangshan','2017-1-26');
 +-------------------------+
@@ -226,7 +226,7 @@ jomoon#SF_TUTS_WH@SF_TUTS.PUBLIC>INSERT INTO emp_basic VALUES
 
 ### X
 ```sql
-jomoon#SF_TUTS_WH@SF_TUTS.PUBLIC>SELECT * FROM emp_basic;
+jomoon#SF_TUTS_WH@SF_TUTS.PUBLIC> SELECT * FROM emp_basic;
 +------------+-----------+------------------------+------------------------+----------+------------+
 | FIRST_NAME | LAST_NAME | EMAIL                  | STREETADDRESS          | CITY     | START_DATE |
 |------------+-----------+------------------------+------------------------+----------+------------|
@@ -248,7 +248,7 @@ jomoon#SF_TUTS_WH@SF_TUTS.PUBLIC>SELECT * FROM emp_basic;
 
 ### X
 ```sql
-jomoon#SF_TUTS_WH@SF_TUTS.PUBLIC>SELECT email FROM emp_basic WHERE email LIKE '%.uk';
+jomoon#SF_TUTS_WH@SF_TUTS.PUBLIC> SELECT email FROM emp_basic WHERE email LIKE '%.uk';
 +------------------------+
 | EMAIL                  |
 |------------------------|
@@ -260,7 +260,7 @@ jomoon#SF_TUTS_WH@SF_TUTS.PUBLIC>SELECT email FROM emp_basic WHERE email LIKE '%
 
 ### X
 ```sql
-jomoon#SF_TUTS_WH@SF_TUTS.PUBLIC>SELECT first_name, last_name, DATEADD('day',90,start_date) FROM emp_basic WHERE start_date <= '2017-01-01';
+jomoon#SF_TUTS_WH@SF_TUTS.PUBLIC> SELECT first_name, last_name, DATEADD('day',90,start_date) FROM emp_basic WHERE start_date <= '2017-01-01';
 +------------+-----------+------------------------------+
 | FIRST_NAME | LAST_NAME | DATEADD('DAY',90,START_DATE) |
 |------------+-----------+------------------------------|
@@ -280,7 +280,7 @@ jomoon#SF_TUTS_WH@SF_TUTS.PUBLIC>SELECT first_name, last_name, DATEADD('day',90,
 
 ### X
 ```sql
-jomoon#SF_TUTS_WH@SF_TUTS.PUBLIC>DROP DATABASE IF EXISTS sf_tuts;
+jomoon#SF_TUTS_WH@SF_TUTS.PUBLIC> DROP DATABASE IF EXISTS sf_tuts;
 +-------------------------------+
 | status                        |
 |-------------------------------|
@@ -292,7 +292,7 @@ jomoon#SF_TUTS_WH@SF_TUTS.PUBLIC>DROP DATABASE IF EXISTS sf_tuts;
 
 ### X
 ```sql
-jomoon#SF_TUTS_WH@SF_TUTS.PUBLIC>DROP WAREHOUSE IF EXISTS sf_tuts_wh;
+jomoon#SF_TUTS_WH@SF_TUTS.PUBLIC> DROP WAREHOUSE IF EXISTS sf_tuts_wh;
 +----------------------------------+
 | status                           |
 |----------------------------------|
