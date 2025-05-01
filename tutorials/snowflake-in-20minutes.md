@@ -1,20 +1,17 @@
 
-### X
+### Login to SnowSQL
 ```sh
 export SNOWSQL_PWD=
-
 snowsql -a gnsjdpk-tj82189 -u jomoon
+
+* SnowSQL * v1.3.3
+Type SQL statements or !help
+jomoon#COMPUTE_WH@(no database).(no schema)>
 ```
 
 
-### X
+### Create a database
 ```sql
-* SnowSQL * v1.3.3
-Type SQL statements or !help
-jomoon#COMPUTE_WH@(no database).(no schema)> ^D
-Goodbye!
-
-
 jomoon#COMPUTE_WH@(no database).(no schema)>CREATE OR REPLACE DATABASE sf_tuts;
 +----------------------------------------+
 | status                                 |
@@ -25,7 +22,7 @@ jomoon#COMPUTE_WH@(no database).(no schema)>CREATE OR REPLACE DATABASE sf_tuts;
 ```
 
 
-### X
+### Note that the database and schema you just created are now in use for your current session, as reflected in the SnowSQL command prompt. You can also use the context functions to get this information.
 ```sql
 jomoon#COMPUTE_WH@SF_TUTS.PUBLIC>SELECT CURRENT_DATABASE(), CURRENT_SCHEMA();
 +--------------------+------------------+
@@ -37,7 +34,7 @@ jomoon#COMPUTE_WH@SF_TUTS.PUBLIC>SELECT CURRENT_DATABASE(), CURRENT_SCHEMA();
 ```
 
 
-### X
+### Create a table
 ```sql
 jomoon#COMPUTE_WH@SF_TUTS.PUBLIC>CREATE OR REPLACE TABLE emp_basic (
                                     first_name STRING ,
@@ -58,7 +55,7 @@ jomoon#COMPUTE_WH@SF_TUTS.PUBLIC>CREATE OR REPLACE TABLE emp_basic (
 ```
 
 
-### X
+### Create a virtual warehouse
 ```sql
 jomoon#COMPUTE_WH@SF_TUTS.PUBLIC>CREATE OR REPLACE WAREHOUSE sf_tuts_wh WITH
                                     WAREHOUSE_SIZE='X-SMALL'
@@ -74,7 +71,7 @@ jomoon#COMPUTE_WH@SF_TUTS.PUBLIC>CREATE OR REPLACE WAREHOUSE sf_tuts_wh WITH
 ```
 
 
-### X
+### After you create the warehouse, it’s now in use for your current session. This information is displayed in your SnowSQL command prompt. You can also retrieve the name of the warehouse by using the following context function:
 ```sql
 jomoon#SF_TUTS_WH@SF_TUTS.PUBLIC>SELECT CURRENT_WAREHOUSE();
 +---------------------+
@@ -86,7 +83,7 @@ jomoon#SF_TUTS_WH@SF_TUTS.PUBLIC>SELECT CURRENT_WAREHOUSE();
 ```
 
 
-### X
+### Execute the PUT command in SnowSQL to upload local data files to the table stage provided for the emp_basic table you created.
 ```sql
 jomoon#SF_TUTS_WH@SF_TUTS.PUBLIC>PUT file:///home/jomoon/Snowflake/data/*.csv @sf_tuts.public.%emp_basic;
 +--------------------------+-----------------------------+-------------+-------------+--------------------+--------------------+----------+---------+
@@ -99,7 +96,7 @@ jomoon#SF_TUTS_WH@SF_TUTS.PUBLIC>PUT file:///home/jomoon/Snowflake/data/*.csv @s
 ```
 
 
-### X
+### You can list the staged files using the LIST command.
 ```sql
 jomoon#SF_TUTS_WH@SF_TUTS.PUBLIC>LIST @sf_tuts.public.%emp_basic;
 +-----------------------------+------+----------------------------------+------------------------------+
@@ -112,7 +109,7 @@ jomoon#SF_TUTS_WH@SF_TUTS.PUBLIC>LIST @sf_tuts.public.%emp_basic;
 ```
 
 
-### X
+### The COPY INTO <table> command uses the virtual warehouse you created in Create Snowflake objects to copy files.
 ```sql
 jomoon#SF_TUTS_WH@SF_TUTS.PUBLIC>COPY INTO emp_basic
                                    FROM @%emp_basic
@@ -129,7 +126,7 @@ jomoon#SF_TUTS_WH@SF_TUTS.PUBLIC>COPY INTO emp_basic
 ```
 
 
-### X
+### Remove
 ```sql
 jomoon#SF_TUTS_WH@SF_TUTS.PUBLIC>REMOVE @sf_tuts.public.%emp_basic;
 +-----------------------------+---------+
@@ -142,13 +139,13 @@ jomoon#SF_TUTS_WH@SF_TUTS.PUBLIC>REMOVE @sf_tuts.public.%emp_basic;
 ```
 
 
-### X
+### List Again
 ```sql
 jomoon#SF_TUTS_WH@SF_TUTS.PUBLIC>LIST @sf_tuts.public.%emp_basic;
 ```
 
 
-### X
+### Load Again
 ```sql
 jomoon#SF_TUTS_WH@SF_TUTS.PUBLIC>PUT file:///home/jomoon/Snowflake/data/*.csv @sf_tuts.public.%emp_basic;
 +--------------------------+-----------------------------+-------------+-------------+--------------------+--------------------+----------+---------+
@@ -161,7 +158,7 @@ jomoon#SF_TUTS_WH@SF_TUTS.PUBLIC>PUT file:///home/jomoon/Snowflake/data/*.csv @s
 ```
 
 
-### X
+### List
 ```sql
 jomoon#SF_TUTS_WH@SF_TUTS.PUBLIC>LIST @sf_tuts.public.%emp_basic;
 +-----------------------------+------+----------------------------------+------------------------------+
@@ -303,4 +300,7 @@ jomoon#SF_TUTS_WH@SF_TUTS.PUBLIC>DROP WAREHOUSE IF EXISTS sf_tuts_wh;
 +----------------------------------+
 1 Row(s) produced. Time Elapsed: 0.110s
 ```
+
+### References
+- https://docs.snowflake.com/user-guide/tutorials/snowflake-in-20minutes#create-snowflake-objects
 
