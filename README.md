@@ -12,8 +12,7 @@ Similar to shared-disk architectures, Snowflake uses a central data repository f
 But similar to shared-nothing architectures, Snowflake processes queries using MPP (massively parallel processing) compute clusters where each node in the cluster stores a portion of the entire data set locally.
 This approach offers the data management simplicity of a shared-disk architecture, but with the performance and scale-out benefits of a shared-nothing architecture.
 
-
-![alt text](https://github.com/rokmc756/Snowflake/images/snowflake_architecture.png)
+![alt text](https://github.com/rokmc756/Snowflake/blob/main/images/snowflake_architecture.png)
 
 
 ## Tutorials
