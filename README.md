@@ -23,16 +23,16 @@ This approach offers the data management simplicity of a shared-disk architectur
 
 
 ## Tutorials
-- [O] https://docs.snowflake.com/user-guide/tutorials/snowflake-in-20minutes
-- [X] https://docs.snowflake.com/user-guide/tutorials/users-and-roles-tutorial
-- [X] https://docs.snowflake.com/user-guide/tutorials/tasty-bytes-sql-load
-- [X] https://docs.snowflake.com/user-guide/tutorials/tasty-bytes-python-load
-- [X] https://docs.snowflake.com/user-guide/tutorials/load-from-cloud-tutorial
-- [X] https://docs.snowflake.com/user-guide/tutorials/load-from-cloud-tutorial-azure
-- [X] https://docs.snowflake.com/user-guide/tutorials/load-from-cloud-tutorial-gcs
-- [X] https://docs.snowflake.com/user-guide/tutorials/data-load-internal-tutorial
-- [X] https://docs.snowflake.com/user-guide/tutorials/data-load-external-tutorial
-- [X] https://docs.snowflake.com/user-guide/tutorials/json-basics-tutorial
-- [X] https://docs.snowflake.com/user-guide/tutorials/script-data-load-transform-json
-- [X] https://docs.snowflake.com/user-guide/tutorials/script-data-load-transform-parquet
+- [0] https://docs.snowflake.com/user-guide/tutorials/snowflake-in-20minutes
+- [0] https://docs.snowflake.com/user-guide/tutorials/users-and-roles-tutorial
+- [0] https://docs.snowflake.com/user-guide/tutorials/tasty-bytes-sql-load
+- [0] https://docs.snowflake.com/user-guide/tutorials/tasty-bytes-python-load
+- [0] https://docs.snowflake.com/user-guide/tutorials/load-from-cloud-tutorial
+- [0] https://docs.snowflake.com/user-guide/tutorials/load-from-cloud-tutorial-azure
+- [0] https://docs.snowflake.com/user-guide/tutorials/load-from-cloud-tutorial-gcs
+- [0] https://docs.snowflake.com/user-guide/tutorials/data-load-internal-tutorial
+- [0] https://docs.snowflake.com/user-guide/tutorials/data-load-external-tutorial
+- [0] https://docs.snowflake.com/user-guide/tutorials/json-basics-tutorial
+- [0] https://docs.snowflake.com/user-guide/tutorials/script-data-load-transform-json
+- [0] https://docs.snowflake.com/user-guide/tutorials/script-data-load-transform-parquet
 
